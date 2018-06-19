@@ -1,0 +1,244 @@
+    <div class="container-fluid">
+        <div class="row">
+            <!-- <div class="col-lg-3 col-sm-6" *ngFor="let user of users">
+                <div class="card">
+                    <div class="content">
+                        <div class="row">
+                            <div class="col-xs-5">
+                                <div class="icon-big icon-warning text-center">
+                                    <i class="ti-server"></i>
+                                </div>
+                            </div>
+                            <div class="col-xs-7">
+                                <div class="numbers">
+                                    <p>{{ user.name}}</p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer">
+                            <hr />
+                            <div class="stats">
+                                <i class="ti-reload"></i> {{ user.saleAmt}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>  -->
+            <!-- <div class="col-lg-3 col-sm-6" >
+                <div class="card">
+                    <div class="content">
+                        <div class="row">
+                            <div class="col-xs-5">
+                                <div class="icon-big icon-success text-center">
+                                    <i class="ti-wallet"></i>
+                                </div>
+                            </div>
+                            <div class="col-xs-7">
+                                <div class="numbers">
+                                    <p>Revenue</p>
+                                    $1,345
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer">
+                            <hr />
+                            <div class="stats">
+                                <i class="ti-calendar"></i> Last day
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <!-- <div class="col-lg-3 col-sm-6">
+                
+            </div> -->
+            <div class="col-lg-4 col-sm-6" *ngFor="let user of users">
+                <div class="card">
+                    <div class="content">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <div class="icon-big icon-danger text-center">
+                                    <i class="ti-pulse"></i>
+                                </div>
+                            </div>
+                            <div class="col-xs-8">
+                                <div class="numbers">
+                                    <p>Top Customer</p>
+                                     {{ user._id}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer">
+                            <hr />
+                            <div class="stats">
+                                <i class="ti-timer"></i> Sales Amount: {{ user.SaleAmount}} INR
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <div class="card">
+                    <div class="content">
+                        <div class="row">
+                            <div class="col-xs-5">
+                                <div class="icon-big icon-info text-center">
+                                    <i class="ti-medall"></i>
+                                </div>
+                            </div>
+                            <div class="col-xs-7">
+                                <div class="numbers">
+                                    <p>Highest Credit</p>
+                                     Ram
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer">
+                            <hr />
+                            <div class="stats">
+                                <i class="ti-reload"></i>Highest Credit MOP: 20000 INR
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <div class="card">
+                    <div class="content">
+                        <div class="row">
+                            <div class="col-xs-5">
+                                <div class="icon-big icon-info text-center">
+                                    <i class="ti-medall"></i>
+                                </div>
+                            </div>
+                            <div class="col-xs-7">
+                                <div class="numbers">
+                                    <p>Mode Of Payment</p>
+                                    53%
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer">
+                            <hr />
+                            <div class="stats">
+                                <i class="ti-reload"></i>Mixed MOP
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Top Customers</h4>
+                      <!--  <p class="category">24 Hours performance</p>-->
+                    </div>
+                    <div class="content">
+                        <div id="chartHours" class="ct-chart"></div>
+                        <div class="footer">
+                            <div class="chart-legend">
+                                <i class="fa fa-circle text-info"></i> Customer 1 (in INR)
+                              <!--  <i class="fa fa-circle text-danger"></i> Click-->
+                                <i class="fa fa-circle text-warning"></i> Customer 2 (in INR)
+                            </div>
+                            <hr>
+                            <div class="stats">
+                                <i class="ti-reload"></i> Updated 3 minutes ago
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row dropzone" dropZone (hovered)="toggleHover($event)" (dropped)="startUpload($event)" [class.hovering]="isHovering">
+            <div class="col-md-7 col-sm-12" style=" max-height: 400px; ">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Top Customers In The Month<button (click)="undoUpdate()" [disabled]="isGrayed" class="button ti-back-right undo"></button></h4>
+                        <!-- <span class="icon-name"> undo-update</span> -->
+                    <!--    <p class="category">Last Campaign Performance</p>-->
+                    <button (click)="getTopData()" class="button ti-back-right undo"></button>
+                    </div>
+                    <!-- <div class="dropzone" dropZone (hovered)="toggleHover($event)" (dropped)="startUpload($event)" [class.hovering]="isHovering"> <h3>Chat Update Drop Zone</h3>
+                    <p>Drag and Drop a File</p>
+                    <div class="file">
+                        <label class="file-label"> <input type="file" (change)="changeListener($event)" #input />
+                            <span class="file-cta">
+                                <span class="file-icon">
+                                    <i class="fa fa-upload"></i>
+                                </span>
+                                <span class="file-label">
+                                    or choose a file…
+                                </span>
+                            </span>
+                        </label>
+                    </div></div> -->
+                    <div class="content">
+                        <div id="chartPreferences" class="ct-chart ct-perfect-fourth"></div>
+                        <!-- <div class="footer">
+                            <div class="chart-legend">
+                                <i class="fa fa-circle text-info"></i> Open
+                                <i class="fa fa-circle text-danger"></i> Bounce
+                                <i class="fa fa-circle text-warning"></i> Unsubscribe
+                            </div>
+                            <hr>
+                            <div class="stats">
+                                <i class="ti-timer"></i> Campaign sent 2 days ago
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5" style="padding-right:0;">
+                <div class="card ">
+                    <div class="header">
+                        <h4 class="title">Mode Of Payments</h4>
+                      <!--  <p class="category">All products including Taxes</p>-->
+                    </div>
+                    <div class="content">
+                        <div id="chartActivity" class="ct-chart col-md-10"></div>    
+                        <div class="footer col-md-2" style=" padding-top: 10%;">
+                            <div class="chart-legend">
+                                <i class="fa fa-circle text-info"></i>Cash
+                                <i class="fa fa-circle text-warning"></i> Credit
+                                <i class="fa fa-circle text-danger"></i> Mixed
+                            </div>
+                            <!-- <hr>
+                                                    <div class="stats">
+                                                        <i class="ti-check"></i> Data information certified
+                                                    </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+        
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Customers With Highest Credit MOP</h4>
+                        <!--  <p class="category">24 Hours performance</p>-->
+                    </div>
+                    <div class="content">
+                        <div id="chartHighCreditMOP" class="ct-chart"></div>
+                        <!-- <div class="footer">
+                            <div class="chart-legend">
+                                <i class="fa fa-circle text-info"></i> Customer 1 (in INR)
+                                 <i class="fa fa-circle text-danger"></i> Click
+                                <i class="fa fa-circle text-warning"></i> Customer 2 (in INR)
+                            </div>
+                            <hr>
+                            <div class="stats">
+                                <i class="ti-reload"></i> Updated 3 minutes ago
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,38 @@
+.dropzone { 
+    &.hovering {
+        border: 2px solid #f16624;
+        color: #dadada !important;
+    }
+
+    .file-label {
+        font-size: 1.2em;
+    }
+}
+
+progress::-webkit-progress-value {
+    transition: width 0.1s ease;
+}
+.undo {
+ font-weight: inherit;
+ float:right;
+ line-height: 1.2em;
+}
+button[disabled] {
+    cursor: not-allowed;
+}
+span.undo:hover{
+transform: scale(1.2);
+}
+.ti-back-right:before {
+    color: #DD0330;
+    font-weight: 700;
+}
+//paper-dashboard.css overwrite
+.card .numbers {
+    font-size: 1.4em;
+    
+}
+// .card .ct-chart {
+//     height: 261px;
+// }
+
